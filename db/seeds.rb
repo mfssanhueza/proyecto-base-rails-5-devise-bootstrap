@@ -26,14 +26,16 @@ User.create({
     password_confirmation: '123456'
 })
 
-10.times do |i|
- Post.create(
- user: User.order("RANDOM()").first,
- content: Faker::Lorem.paragraph)
-end
-
 20.times do |i|
  Comment.create(
  post: Post.order("RANDOM()").first,
  content: Faker::Lorem.paragraph)
+end
+
+10.times do |i|
+ Post.create(
+ user: User.order("RANDOM()").first,
+ title: "Lorem Ipsum #{i}!",
+ content: Faker::Lorem.paragraph,
+ created_at: Faker::Number.number(1).to_i.day.ago)
 end

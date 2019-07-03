@@ -28,12 +28,18 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
       column do
-        panel "Posts" do
-          ul do
-            li "Post creados: #{Post.count}"
-            li "Comentarios creados: #{Comment.count}"
-          end
+        panel "Gráfico" do
+         render 'shared/chart'
         end
+      end
+    end
+    columns do
+      panel "Gráfico" do
+       render 'shared/chart'
+      end
+      panel 'ejemplo' do
+        my_chart = Post.group_by_day(:created_at).count
+        line_chart my_chart
       end
     end
 
