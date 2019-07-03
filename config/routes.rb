@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :comments
+  resources :posts
+  resources :drinks
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   get 'pages/index'
   root 'pages#index'
 
